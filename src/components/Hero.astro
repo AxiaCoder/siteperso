@@ -1,0 +1,60 @@
+---
+const name = "Benoît Guelin";
+const title = "Backend Developer";
+const tagline = "Backend dev looking for challenging technical projects. Remote-first.";
+
+const socials = [
+  { name: 'github', href: 'https://github.com/AxiaCoder' },
+  { name: 'linkedin', href: 'https://www.linkedin.com/in/beno%C3%AEt-guelin-51947a10b/' },
+];
+---
+
+<section class="min-h-screen flex items-center pt-14">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full">
+    <div class="mb-8 text-terminal-text text-sm">
+      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> ./intro.txt
+    </div>
+
+    <div class="space-y-4 mb-8">
+      <p class="text-terminal-text">
+        <span class="text-terminal-cyan">&gt;</span> <span class="text-terminal-green">role</span>: <span class="text-terminal-amber-bright text-2xl sm:text-3xl lg:text-4xl font-semibold">{title}</span><span class="animate-blink text-terminal-amber">_</span>
+      </p>
+
+      <p class="text-terminal-text">
+        <span class="text-terminal-cyan">&gt;</span> <span class="text-terminal-green">name</span>: <span class="text-terminal-text">{name}</span>
+      </p>
+
+      <p class="text-terminal-text">
+        <span class="text-terminal-cyan">&gt;</span> <span class="text-terminal-green">bio</span>: <span class="text-terminal-text">{tagline}</span>
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mb-12">
+      <a
+        href="#projects"
+        class="inline-flex items-center gap-2 px-4 py-2 border border-terminal-amber text-terminal-amber hover:bg-terminal-amber hover:text-terminal-bg transition-colors"
+      >
+        <span class="text-terminal-text-dim">$</span> ls ./projects
+      </a>
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 px-4 py-2 border border-terminal-text-dim text-terminal-text-dim hover:border-terminal-amber hover:text-terminal-amber transition-colors"
+      >
+        <span>$</span> ./contact.sh
+      </a>
+    </div>
+
+    <div class="flex items-center gap-6 text-sm">
+      {socials.map((social) => (
+        <a
+          href={social.href}
+          target={social.href.startsWith('mailto') ? undefined : '_blank'}
+          rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+          class="text-terminal-cyan hover:text-terminal-amber transition-colors"
+        >
+          [{social.name}]
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

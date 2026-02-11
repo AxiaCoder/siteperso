@@ -1,0 +1,68 @@
+---
+const navLinks = [
+  { href: '#about', label: 'about' },
+  { href: '#skills', label: 'skills' },
+  { href: '#projects', label: 'projects' },
+  { href: '#experience', label: 'experience' },
+  { href: '#contact', label: 'contact' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-terminal-bg/95 border-b border-terminal-amber/20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-14">
+      <a href="/" class="text-terminal-amber hover:animate-glow">
+        <span class="text-terminal-text-dim">~/</span>portfolio
+      </a>
+
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map((link, i) => (
+          <a
+            href={link.href}
+            class="px-3 py-1 text-sm text-terminal-text hover:text-terminal-cyan transition-colors"
+          >
+            <span class="text-terminal-cyan">[{i}]</span> {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-terminal-amber"
+        aria-label="Menu"
+      >
+        <span class="text-lg">≡</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-terminal-bg border-t border-terminal-amber/20">
+    <div class="px-4 py-3 space-y-2">
+      {navLinks.map((link, i) => (
+        <a
+          href={link.href}
+          class="block text-terminal-text-dim hover:text-terminal-amber transition-colors py-1"
+        >
+          <span class="text-terminal-amber/60">$</span> cd {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+    });
+  });
+</script>

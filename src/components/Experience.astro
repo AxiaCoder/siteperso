@@ -1,0 +1,63 @@
+---
+const experiences = [
+  {
+    company: 'VoyagePrive',
+    position: 'Backend Developer',
+    period: '2025-present',
+    tasks: [
+      'Catalog management system',
+      'Mobile API development',
+      'Checkout tunnel implementation',
+    ],
+  },
+  {
+    company: 'Winzana',
+    position: 'Backend Developer',
+    period: '2021-2025',
+    tasks: [
+      'Contractor at VoyagePrive: catalog, mobile API, checkout (2 years)',
+      'Contest & rewards platform for food industry client (NestJS/React)',
+      'Travel tools maintenance and refactoring (PHP, Java, React)',
+    ],
+  },
+  {
+    company: 'Tooeasy',
+    position: 'Web Developer',
+    period: '2016-2021',
+    tasks: [
+      'Websites with Codeigniter & WordPress',
+      'Hybrid mobile apps with Cordova',
+      'WordPress trainer',
+    ],
+  },
+];
+---
+
+<section id="experience" class="py-24 bg-terminal-bg-light">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="mb-6 text-terminal-text text-sm">
+      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">git log</span> --oneline ./career
+    </div>
+
+    <div class="border border-terminal-amber/30 p-6 bg-terminal-bg space-y-6">
+      {experiences.map((exp, i) => (
+        <div class={i > 0 ? 'pt-6 border-t border-terminal-amber/20' : ''}>
+          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-3">
+            <span class="text-terminal-cyan font-semibold">{exp.period}</span>
+            <span class="text-terminal-amber">{exp.position}</span>
+            <span class="text-terminal-text">@ {exp.company}</span>
+          </div>
+
+          <ul class="space-y-1 text-sm">
+            {exp.tasks.map((task) => (
+              <li class="text-terminal-text">
+                <span class="text-terminal-green mr-2">+</span>
+                {task}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
