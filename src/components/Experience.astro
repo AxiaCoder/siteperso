@@ -36,27 +36,32 @@ const experiences = [
 <section id="experience" class="py-24 bg-terminal-bg-light">
   <div class="max-w-3xl mx-auto px-4 sm:px-6">
     <div class="mb-6 text-terminal-text text-sm">
-      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">git log</span> --oneline ./career
+      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">git log</span> --graph ./career
     </div>
 
-    <div class="border border-terminal-amber/30 p-6 bg-terminal-bg space-y-6">
+    <div class="border border-terminal-amber/30 p-6 bg-terminal-bg text-sm leading-relaxed">
       {experiences.map((exp, i) => (
-        <div class={i > 0 ? 'pt-6 border-t border-terminal-amber/20' : ''}>
-          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-3">
-            <span class="text-terminal-cyan font-semibold">{exp.period}</span>
-            <span class="text-terminal-amber">{exp.position}</span>
-            <span class="text-terminal-text">@ {exp.company}</span>
+        <Fragment>
+          <div class="flex gap-3">
+            <span class="w-2 shrink-0 text-terminal-amber select-none" aria-hidden="true">*</span>
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span class="text-terminal-cyan font-semibold">{exp.period}</span>
+              <span class="text-terminal-amber">{exp.position}</span>
+              <span class="text-terminal-text">@ {exp.company}</span>
+            </div>
           </div>
 
-          <ul class="space-y-1 text-sm">
-            {exp.tasks.map((task) => (
-              <li class="text-terminal-text">
-                <span class="text-terminal-green mr-2">+</span>
-                {task}
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div class={`flex gap-3 ${i < experiences.length - 1 ? 'pb-5' : ''}`}>
+            <span class="w-2 shrink-0 flex justify-center" aria-hidden="true">
+              <span class="w-px bg-terminal-amber/40"></span>
+            </span>
+            <ul class="pl-4 space-y-1">
+              {exp.tasks.map((task) => (
+                <li class="text-terminal-text">{task}</li>
+              ))}
+            </ul>
+          </div>
+        </Fragment>
       ))}
     </div>
   </div>

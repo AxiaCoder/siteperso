@@ -13,7 +13,7 @@ const lines = [
 <section id="about" class="py-24">
   <div class="max-w-3xl mx-auto px-4 sm:px-6">
     <div class="mb-6 text-terminal-text text-sm">
-      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> ./about.md
+      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> -n ./about.md
     </div>
 
     <div class="border border-terminal-cyan/30 p-6 bg-terminal-bg-light">
@@ -26,13 +26,9 @@ const lines = [
 
       <div class="space-y-1">
         {lines.map((line, i) => (
-          <p class={`${line === '' ? 'h-4' : ''} ${line.startsWith('Philosophy') || line.startsWith('Looking') || line.startsWith('Stack') ? 'text-terminal-green' : 'text-terminal-text'}`}>
-            {line && (
-              <>
-                <span class="text-terminal-cyan select-none w-8 inline-block text-right mr-4">{i + 1}</span>
-                {line}
-              </>
-            )}
+          <p class={line.startsWith('Philosophy') || line.startsWith('Looking') || line.startsWith('Stack') ? 'text-terminal-green' : 'text-terminal-text'}>
+            <span class="text-terminal-cyan select-none w-8 inline-block text-right mr-4">{i + 1}</span>
+            {line || <span>&nbsp;</span>}
           </p>
         ))}
       </div>
