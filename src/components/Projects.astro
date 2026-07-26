@@ -1,16 +1,19 @@
 ---
+// Pitch = bénéfice utilisateur, pas la techno. `note` = LE choix technique notable.
 const projects = [
   {
     name: 'MyLittleLibrary',
-    description: 'Unified media library for managing different media types in one place.',
-    stack: ['AdonisJS', 'Inertia', 'React', 'PostgreSQL', 'pnpm'],
-    status: 'alpha',
-    link: null,
+    description: 'Keep track of every film, series and anime you watch — progress, ratings and favourites in one place.',
+    note: 'A shared UI package — design tokens and Storybook — feeds the Adonis app, and CI gates every push on lint, types and a security audit.',
+    stack: ['AdonisJS 6', 'Inertia', 'React 19', 'PostgreSQL', 'Storybook', 'Playwright'],
+    status: 'beta',
+    link: 'https://www.mylittlelibrary.io/',
   },
   {
     name: 'MyLittleTrivia',
-    description: 'Multiplayer quiz game in party mode. Create questions and challenge friends. Multilingual (fr/en).',
-    stack: ['AdonisJS', 'Inertia', 'React', 'PostgreSQL', 'pnpm'],
+    description: 'Quiz nights with friends — write your own questions and play them in French or English.',
+    note: 'Categories, questions and answers each own a translations table, so adding a language means inserting rows, not migrating the schema.',
+    stack: ['AdonisJS 6', 'Inertia', 'React 19', 'PostgreSQL', 'Japa', 'Playwright'],
     status: 'alpha',
     link: null,
   },
@@ -40,14 +43,18 @@ const projects = [
                     rel="noopener noreferrer"
                     class="text-terminal-cyan hover:text-terminal-amber transition-colors hover:underline"
                   >
-                    {project.name}/
+                    {project.name}/ <span aria-hidden="true">↗</span>
                   </a>
                 ) : (
                   <span class="text-terminal-cyan">{project.name}/</span>
                 )}
               </div>
               <div class="flex items-center gap-2">
-                {!project.link && (
+                {project.link ? (
+                  <span class="text-xs px-2 py-0.5 border border-terminal-green/60 text-terminal-green">
+                    live
+                  </span>
+                ) : (
                   <span
                     class="text-xs px-2 py-0.5 border border-terminal-text-dim/40 text-terminal-text-dim"
                     title="Source not public — happy to walk through it on request"
@@ -61,8 +68,12 @@ const projects = [
               </div>
             </div>
 
-            <p class="text-terminal-text text-sm mb-3 pl-4">
+            <p class="text-terminal-text text-sm mb-1 pl-4">
               <span class="text-terminal-text-dim">#</span> {project.description}
+            </p>
+
+            <p class="text-terminal-text-dim text-sm mb-3 pl-4">
+              <span class="text-terminal-green">$</span> {project.note}
             </p>
 
             <div class="flex flex-wrap gap-2 pl-4">
