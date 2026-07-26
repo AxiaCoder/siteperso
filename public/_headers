@@ -1,0 +1,22 @@
+# Netlify lit ce fichier à la racine du dossier publié (dist/).
+# Sans lui, Netlify sert TOUT en `max-age=0, must-revalidate`, y compris les
+# assets dont le nom contient déjà un hash de contenu.
+
+# Assets buildés par Astro : le hash est dans le nom de fichier, donc un
+# changement de contenu change l'URL. Ils sont immuables, on peut les cacher à vie.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Assets à URL stable : un cache long servirait une version périmée après
+# regénération. Une journée suffit et évite la revalidation à chaque visite.
+/og-image.png
+  Cache-Control: public, max-age=86400
+/favicon.svg
+  Cache-Control: public, max-age=86400
+
+# En-têtes de sécurité. Le HSTS est déjà posé par Netlify.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
