@@ -3,16 +3,16 @@ const projects = [
   {
     name: 'MyLittleLibrary',
     description: 'Unified media library for managing different media types in one place.',
-    stack: ['AdonisJS', 'Inertia', 'React', 'pnpm'],
+    stack: ['AdonisJS', 'Inertia', 'React', 'PostgreSQL', 'pnpm'],
     status: 'alpha',
-    link: '#',
+    link: null,
   },
   {
     name: 'MyLittleTrivia',
-    description: 'Multiplayer quiz game in party mode. Create questions and challenge friends.',
-    stack: ['AdonisJS', 'Inertia', 'React', 'pnpm'],
+    description: 'Multiplayer quiz game in party mode. Create questions and challenge friends. Multilingual (fr/en).',
+    stack: ['AdonisJS', 'Inertia', 'React', 'PostgreSQL', 'pnpm'],
     status: 'alpha',
-    link: '#',
+    link: null,
   },
 ];
 ---
@@ -35,14 +35,35 @@ const projects = [
           <div class="block p-4">
             <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
               <div class="flex items-center gap-2">
-                <span class="text-terminal-green">drwxr-xr-x</span>
-                <span class="text-terminal-cyan">
-                  {project.name}/
+                <span class={project.link ? 'text-terminal-green' : 'text-terminal-text-dim'}>
+                  {project.link ? 'drwxr-xr-x' : 'drwx------'}
+                </span>
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-terminal-cyan hover:text-terminal-amber transition-colors hover:underline"
+                  >
+                    {project.name}/
+                  </a>
+                ) : (
+                  <span class="text-terminal-cyan">{project.name}/</span>
+                )}
+              </div>
+              <div class="flex items-center gap-2">
+                {!project.link && (
+                  <span
+                    class="text-xs px-2 py-0.5 border border-terminal-text-dim/40 text-terminal-text-dim"
+                    title="Source not public — happy to walk through it on request"
+                  >
+                    private
+                  </span>
+                )}
+                <span class="text-xs px-2 py-0.5 border border-terminal-amber/60 text-terminal-amber">
+                  {project.status}
                 </span>
               </div>
-              <span class="text-xs px-2 py-0.5 border border-terminal-amber/60 text-terminal-amber">
-                {project.status}
-              </span>
             </div>
 
             <p class="text-terminal-text text-sm mb-3 pl-4">

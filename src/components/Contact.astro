@@ -1,5 +1,9 @@
 ---
+const email = 'benoit.guelin.pro@gmail.com';
+const mailto = `mailto:${email}?subject=${encodeURIComponent('Contact via benoit-guelin.fr')}`;
+
 const links = [
+  { cmd: 'mail', value: email, href: mailto },
   { cmd: 'open', value: 'linkedin.com/in/benoît-guelin', href: 'https://www.linkedin.com/in/beno%C3%AEt-guelin-51947a10b/' },
   { cmd: 'open', value: 'github.com/AxiaCoder', href: 'https://github.com/AxiaCoder' },
 ];

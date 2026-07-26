@@ -1,12 +1,16 @@
 ---
 const skills = [
   { category: 'backend', items: ['Node.js', 'AdonisJS', 'NestJS', 'TypeScript', 'PHP', 'Symfony', 'Laravel'] },
+  { category: 'database', items: ['PostgreSQL', 'MySQL', 'Drizzle', 'Lucid ORM'] },
   { category: 'api', items: ['REST', 'OpenAPI', 'Swagger'] },
   { category: 'frontend', items: ['React', 'Inertia.js', 'Tailwind'] },
-  { category: 'tools', items: ['Git', 'Docker', 'Jira', 'Linear', 'pnpm'] },
+  { category: 'infra', items: ['Docker', 'CI/CD', 'Linux'] },
+  { category: 'tools', items: ['Git', 'pnpm', 'Monorepo', 'Testing', 'Jira', 'Linear'] },
   { category: 'payments', items: ['Payline', 'Adyen'] },
-  { category: 'devops', items: ['CI/CD', 'Testing', 'Monorepo'] },
 ];
+
+// Aligne la colonne des items comme un vrai `tree`
+const labelWidth = Math.max(...skills.map((s) => s.category.length)) + 1;
 ---
 
 <section id="skills" class="py-24 bg-terminal-bg-light">
@@ -15,11 +19,11 @@ const skills = [
       <span class="text-terminal-green">$</span> <span class="text-terminal-amber">tree</span> ./skills
     </div>
 
-    <div class="border border-terminal-cyan/30 p-6 bg-terminal-bg">
+    <div class="border border-terminal-cyan/30 p-6 bg-terminal-bg overflow-x-auto">
       <pre class="text-sm leading-relaxed"><code class="text-terminal-text"><span class="text-terminal-cyan">skills/</span>
 {skills.map((skill, i) => (
   <Fragment>
-<span class="text-terminal-text-dim">{i === skills.length - 1 ? '└── ' : '├── '}</span><span class="text-terminal-green">{skill.category}/</span>  <span class="text-terminal-amber">{skill.items.join(', ')}</span>
+<span class="text-terminal-text-dim">{i === skills.length - 1 ? '└── ' : '├── '}</span><span class="text-terminal-green">{`${skill.category}/`.padEnd(labelWidth + 1)}</span>  <span class="text-terminal-amber">{skill.items.join(', ')}</span>
 </Fragment>
 ))}</code></pre>
     </div>

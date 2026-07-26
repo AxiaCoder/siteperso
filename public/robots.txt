@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.benoit-guelin.fr/sitemap-index.xml
