@@ -1,4 +1,9 @@
 ---
+// Police self-hébergée : pas de requête vers Google (RGPD), pas de tiers bloquant le rendu.
+// Seules les graisses réellement utilisées sont chargées : 400 (corps) et 600 (font-semibold).
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-600.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -40,11 +45,6 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
