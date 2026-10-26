@@ -17,6 +17,16 @@ const projects = [
     status: 'alpha',
     link: null,
   },
+  {
+    name: 'AI ecosystem',
+    description: 'A daily Claude Code system where AI-written code ships only through tests, review and guardrails, with the context the code does not contain.',
+    note: 'Settings and delegation rules are judged on measurements, not assumptions: native OpenTelemetry feeds Grafana dashboards.',
+    stack: ['Tauri', 'Claude Code', 'OpenTelemetry', 'Grafana'],
+    status: 'active',
+    link: '/ai-ecosystem',
+    internal: true,
+    badge: 'public repos',
+  },
 ];
 ---
 
@@ -36,7 +46,14 @@ const projects = [
                 <span class={project.link ? 'text-terminal-green' : 'text-terminal-text-dim'}>
                   {project.link ? 'drwxr-xr-x' : 'drwx------'}
                 </span>
-                {project.link ? (
+                {project.internal ? (
+                  <a
+                    href={project.link}
+                    class="text-terminal-cyan hover:text-terminal-amber transition-colors hover:underline"
+                  >
+                    {project.name}/
+                  </a>
+                ) : project.link ? (
                   <a
                     href={project.link}
                     target="_blank"
@@ -50,7 +67,11 @@ const projects = [
                 )}
               </div>
               <div class="flex items-center gap-2">
-                {project.link ? (
+                {project.badge ? (
+                  <span class="text-xs px-2 py-0.5 border border-terminal-green/60 text-terminal-green">
+                    {project.badge}
+                  </span>
+                ) : project.link ? (
                   <span class="text-xs px-2 py-0.5 border border-terminal-green/60 text-terminal-green">
                     live
                   </span>
