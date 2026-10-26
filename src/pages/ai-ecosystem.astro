@@ -34,7 +34,7 @@ const code = 'text-terminal-amber';
         <section>
           <h2 class={h2}>The workstation: Cloître</h2>
           <p class={meta}>
-            Desktop app · public repository: <a href="https://github.com/AxiaCoder/cloitre" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/cloitre</a>
+            Desktop app · public repository: <a href="https://github.com/AxiaCoder/cloitre" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/cloitre <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
           </p>
           <p class={p}>
             A terminal that does one thing: launch Claude Code, organised around the way I work. One project = one folder, several tabs per project, each tab starts in the right place without a <code class={code}>cd</code> and resumes its session when reopened. No shell to pick, no path to retype.
@@ -50,7 +50,7 @@ const code = 'text-terminal-amber';
         <section>
           <h2 class={h2}>The setup: claude-config</h2>
           <p class={meta}>
-            Public repository: <a href="https://github.com/AxiaCoder/claude-config" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/claude-config</a>
+            Public repository: <a href="https://github.com/AxiaCoder/claude-config" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/claude-config <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
           </p>
           <p class={p}>
             I let the AI write code, but nothing ships without tests, review and guardrails. A chain of sub-agents hands the work along: <code class={code}>dev</code> writes, <code class={code}>tester</code> proves its tests fail without the change, <code class={code}>reviewer</code> reads the pull request, <code class={code}>qa</code> exercises the feature from the outside, <code class={code}>ci</code> replays the CI before the push. Hooks cut loops and destructive commands, and a direct push to <code class={code}>main</code> is refused, the agent included.
@@ -66,13 +66,13 @@ const code = 'text-terminal-amber';
         <section>
           <h2 class={h2}>The measurements: claude-code-telemetry</h2>
           <p class={meta}>
-            Public repository: <a href="https://github.com/AxiaCoder/claude-code-telemetry" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/claude-code-telemetry</a>
+            Public repository: <a href="https://github.com/AxiaCoder/claude-code-telemetry" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/claude-code-telemetry <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
           </p>
           <p class={p}>
             You cannot tell where the quota goes, or whether a setting helped, until you measure. Claude Code's native OpenTelemetry output, plus a collector that gives sub-agents their names back, feeds Grafana dashboards.
           </p>
           <p class={p}>
-            Hook figure: on my main workstation, in September, 3,124 M cache-read tokens against 3.5 M produced, about 900 to 1. Measuring "input + output" would measure the wrong number.
+            Key figure: on my main workstation, in September, 3,124 M cache-read tokens against 3.5 M produced, about 900 to 1. Measuring "input + output" would measure the wrong number.
           </p>
         </section>
 
