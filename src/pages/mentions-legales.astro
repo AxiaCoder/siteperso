@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const rows = [
+  { label: 'Éditeur', value: 'Benoît Guelin, entrepreneur individuel' },
+  { label: 'SIREN / SIRET', value: '131 072 977 / 131 072 977 00013' },
+  { label: 'Adresse', value: '9 rue de la Tour, 13860 Peyrolles-en-Provence' },
+  { label: 'E-mail', value: 'contact@benoit-guelin.fr', href: 'mailto:contact@benoit-guelin.fr' },
+  { label: 'Téléphone', phone: true },
+  { label: 'Directeur de la publication', value: 'Benoît Guelin' },
+  { label: 'Hébergeur', value: 'Netlify, Inc., 101 2nd Street, San Francisco, CA 94105-2239, États-Unis — support@netlify.com' },
+];
+---
+
+<Layout title="Mentions légales — Benoît Guelin" description="Mentions légales du site de Benoît Guelin" lang="fr">
+  <main class="py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <a href="/" class="inline-block mb-8 text-sm text-terminal-text-dim hover:text-terminal-amber transition-colors">
+        <span class="text-terminal-green">$</span> cd ~/portfolio
+      </a>
+
+      <div class="mb-6 text-terminal-text text-sm">
+        <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> <span class="text-terminal-cyan">./mentions-legales.txt</span>
+      </div>
+
+      <div class="border border-terminal-green/30 p-6 bg-terminal-bg-light">
+        <h1 class="text-terminal-amber-bright text-xl font-semibold mb-6">Mentions légales</h1>
+
+        <table class="w-full text-sm text-left">
+          <tbody>
+            {rows.map((row) => (
+              <tr class="border-b border-terminal-green/20 last:border-b-0">
+                <th scope="row" class="py-2 pr-4 align-top font-normal text-terminal-green">{row.label}</th>
+                <td class="py-2 text-terminal-text">
+                  {row.phone ? (
+                    <span id="phone">Numéro affiché avec JavaScript activé</span>
+                  ) : row.href ? (
+                    <a href={row.href} class="hover:text-terminal-cyan transition-colors">{row.value}</a>
+                  ) : (
+                    row.value
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h2 class="text-terminal-amber text-base font-semibold mt-8 mb-3">Données personnelles</h2>
+        <p class="text-terminal-text text-sm">
+          Le site n'a ni formulaire, ni cookie, ni outil de mesure d'audience.
+        </p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+  <script is:inline>
+    (function () {
+      var parts = ['59', '22', '39', '30', '06'];
+      var target = document.getElementById('phone');
+      if (target) target.textContent = parts.reverse().join(' ');
+    })();
+  </script>
+</Layout>

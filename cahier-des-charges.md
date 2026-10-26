@@ -12,7 +12,7 @@ Site vitrine personnel pour **se vendre** en tant que développeur backend PHP/J
 
 | Élément | Choix |
 |---------|-------|
-| Type | Site statique (one-pager) |
+| Type | Site statique : one-pager d'origine (7 sections, Freelance ajoutée) + page `/mentions-legales` |
 | Générateur | **Astro** |
 | Langage | TypeScript |
 | Styling | Tailwind CSS |
@@ -45,7 +45,7 @@ Site vitrine personnel pour **se vendre** en tant que développeur backend PHP/J
 
 ## 4. Structure — Sections
 
-Le site est un **one-pager** avec navigation par ancres. Chaque section est séparée visuellement.
+Le site est à l'origine un **one-pager** avec navigation par ancres. Chaque section est séparée visuellement. Il compte désormais 7 sections (ajout de Freelance, après Projets) et une page séparée `/mentions-legales`, liée depuis le pied de page.
 
 ### 4.1 Navigation (sticky top)
 
@@ -147,7 +147,7 @@ Checklist de ce qui est nécessaire pour que Claude Code puisse générer le sit
 ## 7. Livrables attendus de Claude Code
 
 1. Projet Astro initialisé avec Tailwind CSS
-2. Structure complète du one-pager avec les 6 sections
+2. Structure complète du one-pager avec les 7 sections (Freelance ajoutée), plus la page `/mentions-legales`
 3. Design responsive (mobile-first) dans les tons bleu foncé
 4. Contenu placeholder là où les infos ne sont pas encore fournies
 5. Configuration déploiement (Vercel ou Netlify)
