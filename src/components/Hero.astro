@@ -2,9 +2,12 @@
 const name = "Benoît Guelin";
 const title = "Fullstack Developer";
 const tagline = "Backend-focused fullstack dev looking for challenging technical projects. Remote-friendly, open to Lyon.";
-const availability = "Available now — remote or Lyon";
+const availability = [
+  "Open to a full-time role — remote or Lyon",
+  "Freelance — remote or near Aix-en-Provence",
+];
 
-const email = 'benoit.guelin.pro@gmail.com';
+const email = 'contact@benoit-guelin.fr';
 const mailto = `mailto:${email}?subject=${encodeURIComponent('Contact via benoit-guelin.fr')}`;
 
 const socials = [
@@ -34,14 +37,18 @@ const socials = [
       </p>
     </div>
 
-    <div class="mb-8 flex items-center gap-3 text-sm">
-      <span class="relative flex h-2 w-2" aria-hidden="true">
-        <span class="absolute inline-flex h-full w-full rounded-full bg-terminal-green opacity-75 animate-ping"></span>
-        <span class="relative inline-flex h-2 w-2 rounded-full bg-terminal-green"></span>
-      </span>
-      <span class="text-terminal-text-dim">
-        <span class="text-terminal-green">$</span> <span class="text-terminal-amber">echo</span> <span class="text-terminal-green">"{availability}"</span>
-      </span>
+    <div class="mb-8 space-y-2 text-sm">
+      {availability.map((line) => (
+        <div class="flex items-center gap-3">
+          <span class="relative flex h-2 w-2" aria-hidden="true">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-terminal-green opacity-75 animate-ping"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-terminal-green"></span>
+          </span>
+          <span class="text-terminal-text-dim">
+            <span class="text-terminal-green">$</span> <span class="text-terminal-amber">echo</span> <span class="text-terminal-green">"{line}"</span>
+          </span>
+        </div>
+      ))}
     </div>
 
     <div class="flex flex-wrap gap-4 mb-12">

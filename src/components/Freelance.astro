@@ -1,0 +1,55 @@
+---
+const headline = [
+  'Backend developer, Node.js / TypeScript, senior.',
+  'Product-team reinforcement, remote or on site near Aix-en-Provence.',
+];
+
+const pitch = 'Your API struggles under load, your codebase keeps accumulating debt, or you need an autonomous reinforcement who ships without breaking what exists?';
+
+const points = [
+  {
+    label: 'What I do',
+    text: 'design and development of web applications in Node.js and TypeScript (APIs, back offices, SaaS products), from back end to front end.',
+  },
+  {
+    label: 'What I bring',
+    text: "tested code that is easy to take over; autonomy, understanding the business need before coding; experience on existing codebases; AI-assisted development, never shipping code I don't understand.",
+  },
+  {
+    label: 'Proof',
+    text: 'ten years of experience, named clients (Voyage Privé, Winzana), and two detailed write-ups: the AI ecosystem and My Little Library.',
+  },
+];
+---
+
+<section id="freelance" class="py-24">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="mb-6 text-terminal-text text-sm">
+      <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> <span class="text-terminal-cyan">./freelance.md</span>
+    </div>
+
+    <div class="border border-terminal-green/30 p-6 bg-terminal-bg-light">
+      <div class="mb-6 space-y-1">
+        {headline.map((line) => (
+          <p class="text-terminal-amber-bright font-semibold">{line}</p>
+        ))}
+      </div>
+
+      <p class="text-terminal-text mb-6">
+        <span class="text-terminal-cyan">&gt;</span> {pitch}
+      </p>
+
+      <ul class="space-y-4 mb-6">
+        {points.map((point) => (
+          <li class="text-terminal-text">
+            <span class="text-terminal-green">-</span> <span class="text-terminal-amber">{point.label}:</span> {point.text}
+          </li>
+        ))}
+      </ul>
+
+      <p class="text-terminal-text pt-6 border-t border-terminal-green/20">
+        <span class="text-terminal-cyan">&gt;</span> Available — <a href="#contact" class="text-terminal-cyan hover:text-terminal-amber underline transition-colors">get in touch at the address below</a>.
+      </p>
+    </div>
+  </div>
+</section>
