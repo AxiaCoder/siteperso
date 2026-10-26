@@ -3,11 +3,12 @@
 const projects = [
   {
     name: 'MyLittleLibrary',
-    description: 'Keep track of every film, series and anime you watch — progress, ratings and favourites in one place.',
-    note: 'A shared UI package — design tokens and Storybook — feeds the Adonis app, and CI gates every push on lint, types and a security audit.',
+    description: 'Keep track of every film, series and book you watch or read — progress, ratings and favourites in one place.',
+    note: 'A shared UI package — design tokens and Storybook — feeds the Adonis app, and CI gates every push on lint, types and in-house checks, with a dependency security audit alongside.',
     stack: ['AdonisJS 6', 'Inertia', 'React 19', 'PostgreSQL', 'Storybook', 'Playwright'],
     status: 'beta',
     link: 'https://www.mylittlelibrary.io/',
+    caseStudy: '/my-little-library',
   },
   {
     name: 'MyLittleTrivia',
@@ -104,6 +105,17 @@ const projects = [
                 </span>
               ))}
             </div>
+
+            {project.caseStudy && (
+              <p class="mt-3 pl-4 text-sm">
+                <a
+                  href={project.caseStudy}
+                  class="text-terminal-cyan hover:text-terminal-amber transition-colors hover:underline"
+                >
+                  Case study <span aria-hidden="true">→</span>
+                </a>
+              </p>
+            )}
           </div>
         ))}
       </div>

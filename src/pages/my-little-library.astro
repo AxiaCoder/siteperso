@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const h2 = 'text-terminal-amber text-base font-semibold mt-10 mb-2';
+const link = 'text-terminal-cyan hover:text-terminal-amber transition-colors hover:underline break-words';
+const p = 'text-terminal-text text-sm mb-3';
+const code = 'text-terminal-amber';
+---
+
+<Layout
+  title="My Little Library: a web app built to be shipped — Benoît Guelin"
+  description="Media library (films, series, books): tracking, collections, ratings. A personal project run like a product."
+  lang="en"
+>
+  <main class="py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <a href="/" class="inline-block mb-8 text-sm text-terminal-text-dim hover:text-terminal-amber transition-colors">
+        <span class="text-terminal-green">$</span> cd ~/portfolio
+      </a>
+
+      <div class="mb-6 text-terminal-text text-sm">
+        <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> <span class="text-terminal-cyan">./my-little-library.md</span>
+      </div>
+
+      <article class="border border-terminal-green/30 p-6 bg-terminal-bg-light">
+        <h1 class="text-terminal-amber-bright text-xl font-semibold mb-6">My Little Library: a web app built to be shipped</h1>
+
+        <p class={p}>
+          Media library (films, series, books): tracking, collections, ratings. Closed beta, waiting list open: <a href="https://www.mylittlelibrary.io/" target="_blank" rel="noopener noreferrer" class={link}>https://www.mylittlelibrary.io/ <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </p>
+
+        <p class={p}>
+          A personal project run like a product: what matters to me is not only that the app runs, but that it can be changed without breaking anything and shipped without manual steps.
+        </p>
+
+        <section>
+          <h2 class={h2}>A design system in its own package</h2>
+          <p class={p}>
+            The interface lives in a separate package that the app consumes: twenty-five components (buttons, modals, media cards, fields, status badges…), design tokens, a Storybook, and unit tests on the components that carry behaviour.
+          </p>
+          <p class={p}>
+            Notable choice: moving the interface out of the app lets it be built and tested in isolation, and enforces a single palette on every screen.
+          </p>
+        </section>
+
+        <section>
+          <h2 class={h2}>A CI that blocks before a human reads</h2>
+          <p class={p}>
+            Every pull request goes through a "Quality" job (lint, TypeScript check, in-house checks on the code and on the deployment scripts) and the tests (Japa on the server, Playwright end to end); a dependency security audit runs alongside, for information only.
+          </p>
+          <p class={p}>
+            Notable choice: whatever a machine can verify never comes back to human review.
+          </p>
+        </section>
+
+        <section>
+          <h2 class={h2}>Delivery without intervention</h2>
+          <p class={p}>
+            Merging a "Release PR" cuts a version. The server image is built, started and checked on every pull request, published on every version, then deployed on its own to a VPS behind Traefik. A <code class={code}>/health</code> route reports the running version, and a rollback means re-running the delivery with an older tag.
+          </p>
+        </section>
+
+        <section>
+          <h2 class={h2}>Stack</h2>
+          <p class={p}>
+            AdonisJS 6, strict TypeScript, PostgreSQL, React 19 with Inertia, Tailwind, pnpm monorepo, Docker.
+          </p>
+        </section>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>
