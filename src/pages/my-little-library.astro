@@ -47,7 +47,7 @@ const code = 'text-terminal-amber';
         <section>
           <h2 class={h2}>A CI that blocks before a human reads</h2>
           <p class={p}>
-            Every pull request goes through a "Quality" job (lint, TypeScript check, in-house checks on the code and on the deployment scripts), a dependency security audit, then the tests (Japa on the server, Playwright end to end).
+            Every pull request goes through a "Quality" job (lint, TypeScript check, in-house checks on the code and on the deployment scripts) and the tests (Japa on the server, Playwright end to end); a dependency security audit runs alongside, for information only.
           </p>
           <p class={p}>
             Notable choice: whatever a machine can verify never comes back to human review.
