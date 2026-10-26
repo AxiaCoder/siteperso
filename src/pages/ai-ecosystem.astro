@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const h2 = 'text-terminal-amber text-base font-semibold mt-10 mb-2';
+const meta = 'text-terminal-text-dim text-xs mb-4 break-words';
+const repoLink = 'text-terminal-cyan hover:text-terminal-amber transition-colors hover:underline';
+const p = 'text-terminal-text text-sm mb-3';
+const code = 'text-terminal-amber';
+---
+
+<Layout
+  title="Claude Code, day to day: a system, not a tool — Benoît Guelin"
+  description="A workstation, a configuration, measurements and a knowledge base built around Claude Code."
+  lang="en"
+>
+  <main class="py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <a href="/" class="inline-block mb-8 text-sm text-terminal-text-dim hover:text-terminal-amber transition-colors">
+        <span class="text-terminal-green">$</span> cd ~/portfolio
+      </a>
+
+      <div class="mb-6 text-terminal-text text-sm">
+        <span class="text-terminal-green">$</span> <span class="text-terminal-amber">cat</span> <span class="text-terminal-cyan">./ai-ecosystem.md</span>
+      </div>
+
+      <article class="border border-terminal-green/30 p-6 bg-terminal-bg-light">
+        <h1 class="text-terminal-amber-bright text-xl font-semibold mb-6">Claude Code, day to day: a system, not a tool</h1>
+
+        <p class={p}>
+          I use Claude Code every day as a solo developer. After a few months I stopped treating it as a tool to install and started treating it as a system to build: a dedicated workstation, a configuration that frames what it does, measurements to know whether it works, and a knowledge base that gives it the context the code does not contain.
+        </p>
+
+        <section>
+          <h2 class={h2}>The workstation: Cloître</h2>
+          <p class={meta}>
+            Desktop app · public repository: <a href="https://github.com/AxiaCoder/cloitre" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/cloitre</a>
+          </p>
+          <p class={p}>
+            A terminal that does one thing: launch Claude Code, organised around the way I work. One project = one folder, several tabs per project, each tab starts in the right place without a <code class={code}>cd</code> and resumes its session when reopened. No shell to pick, no path to retype.
+          </p>
+          <p class={p}>
+            Notable choice: Tauri rather than Electron, for memory. Permissions are a closed list: the interface can only launch <code class={code}>claude</code>, in a registered project folder.
+          </p>
+          <p class={p}>
+            Status: under active development, and I already use it daily. Every annoyance I hit becomes an issue, and the roadmap is public on GitHub.
+          </p>
+        </section>
+
+        <section>
+          <h2 class={h2}>The setup: claude-config</h2>
+          <p class={meta}>
+            Public repository: <a href="https://github.com/AxiaCoder/claude-config" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/claude-config</a>
+          </p>
+          <p class={p}>
+            I let the AI write code, but nothing ships without tests, review and guardrails. A chain of sub-agents hands the work along: <code class={code}>dev</code> writes, <code class={code}>tester</code> proves its tests fail without the change, <code class={code}>reviewer</code> reads the pull request, <code class={code}>qa</code> exercises the feature from the outside, <code class={code}>ci</code> replays the CI before the push. Hooks cut loops and destructive commands, and a direct push to <code class={code}>main</code> is refused, the agent included.
+          </p>
+          <p class={p}>
+            All of it is code: versioned, hooks tested, installed by links identically on Windows and macOS, with a personal folder kept apart from what is shared.
+          </p>
+          <p class={p}>
+            Notable choice: the delegation rules are measured rather than assumed.
+          </p>
+        </section>
+
+        <section>
+          <h2 class={h2}>The measurements: claude-code-telemetry</h2>
+          <p class={meta}>
+            Public repository: <a href="https://github.com/AxiaCoder/claude-code-telemetry" target="_blank" rel="noopener noreferrer" class={repoLink}>https://github.com/AxiaCoder/claude-code-telemetry</a>
+          </p>
+          <p class={p}>
+            You cannot tell where the quota goes, or whether a setting helped, until you measure. Claude Code's native OpenTelemetry output, plus a collector that gives sub-agents their names back, feeds Grafana dashboards.
+          </p>
+          <p class={p}>
+            Hook figure: on my main workstation, in September, 3,124 M cache-read tokens against 3.5 M produced, about 900 to 1. Measuring "input + output" would measure the wrong number.
+          </p>
+        </section>
+
+        <section>
+          <h2 class={h2}>The backdrop: The Brain</h2>
+          <p class={p}>
+            Behind the three pieces, a personal knowledge base: Markdown files in a git repository that Claude Code reads at the start of every session. An agent arriving on a project knows nothing that is not in the code (choices already made, progress, abandoned leads). The Brain gives it that.
+          </p>
+          <ul class="text-terminal-text text-sm space-y-2">
+            <li class="flex gap-2">
+              <span class="text-terminal-green" aria-hidden="true">-</span>
+              <span><strong class="text-terminal-amber-bright font-semibold">One folder per domain,</strong> with an index that says when to load it: career, projects (one sheet per project: stack, architecture, decisions, state), cooking.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-terminal-green" aria-hidden="true">-</span>
+              <span><strong class="text-terminal-amber-bright font-semibold">Load the minimum.</strong> Each file declares its scope and its triggers, and old material is only reopened on search.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-terminal-green" aria-hidden="true">-</span>
+              <span><strong class="text-terminal-amber-bright font-semibold">One source of truth per subject.</strong> A rule aims at a single copy.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-terminal-green" aria-hidden="true">-</span>
+              <span><strong class="text-terminal-amber-bright font-semibold">A versioned memory.</strong> The lessons the agent draws from a session are files in git: they can be reread, corrected, undone.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-terminal-green" aria-hidden="true">-</span>
+              <span><strong class="text-terminal-amber-bright font-semibold">The brain and the hands.</strong> Cooking shows it. The Brain keeps the reflective knowledge (tastes, principles, equipment) and stores no recipe. Recipes, stock and meal planning live in a home-made API that Claude drives through an MCP server written in TypeScript with the official SDK. The Brain decides, the MCP executes.</span>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>
